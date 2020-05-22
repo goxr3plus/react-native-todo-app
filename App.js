@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
+import { Button } from 'react-native-elements'
 import GoalInput from './components/GoalInput'
 import GoalItem from './components/GoalItem'
-import { Button } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default function App() {
    const [isAddModalVisible, setAddModalVisible] = useState(false)
