@@ -1,5 +1,5 @@
 ---
-<h3 align="center" > React-Native-todo-app</h3>
+<h3 align="center" > 👋 ⚛️ React-Native-todo-app ⚛️ 👋</h3>
 <p align="center"> 
 <sup>
 <b> React Native todo app using expo SDK 37 </b> 
