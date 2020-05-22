@@ -1,4 +1,4 @@
-# react-native-todo-app
+# React Native TODO App
 React Native 0.61 + Expo Todo App
 
 # Images from Alpha Version
