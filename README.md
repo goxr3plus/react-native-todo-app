@@ -1,5 +1,12 @@
-# React Native TODO App
+---
+<h3 align="center" > React-Native-todo-app</h3>
+<p align="center"> 
+<sup>
+<b> React Native todo app using expo SDK 37 </b> 
+</sup>  
+</p> 
 
+---
 | Demo |
 |:-:|
 | ![Screen_Recording_20200522-201105](https://user-images.githubusercontent.com/20374208/82692855-1d949f80-9c69-11ea-80fd-b32d14d22643.gif)
