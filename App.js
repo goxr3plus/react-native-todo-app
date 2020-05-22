@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { FlatList, StyleSheet, TextInput, View } from 'react-native'
 import { Button, ListItem } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
@@ -12,14 +12,9 @@ export default function App() {
    }
 
    const addGoalHandler = () => {
-      setGoals((currentGoals) => [...currentGoals, currentGoal]) // currentGoals = like previews state
+      setGoals((currentGoals) => [...currentGoals, { id: Math.random().toString(), value: currentGoal }])
       console.log(courseGoals)
    }
-
-   const list = courseGoals.map((goal) => ({
-      title: goal,
-      icon: 'flight-takeoff'
-   }))
 
    /* Render */
    return (
@@ -53,11 +48,11 @@ export default function App() {
                onPress={(e) => setGoals([])}
             />
          </View>
-         <View>
-            {list.map((item, i) => (
-               <ListItem key={i} title={item.title} leftIcon={{ name: item.icon }} bottomDivider />
-            ))}
-         </View>
+         <FlatList
+            keyExtractor={(item) => item.id} //how to generate custom key , if not key is used on the objects ( for example we use id )
+            data={courseGoals}
+            renderItem={(itemData) => <ListItem title={itemData.item.value} leftIcon={{ name: 'assignment' }} bottomDivider />}
+         ></FlatList>
       </View>
    )
 }
