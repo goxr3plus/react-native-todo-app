@@ -1,61 +1,49 @@
 import React, { useState } from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
+import { Modal, StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const GoalInput = (props) => {
    const [currentGoal, setCurrentGoal] = useState('')
+   let textInput
 
    const onChangeText = (goal) => {
       setCurrentGoal(goal)
    }
 
+   const addGoalHandler = () => {
+      props.addGoalHandler(currentGoal)
+      setCurrentGoal('')
+   }
+
    return (
-      <>
+      <Modal
+         visible={props.isVisible}
+         animationType="slide"
+         onShow={() => {
+            textInput.focus()
+         }}
+      >
          <View style={styles.inputContainer}>
-            <TextInput
-               placeholder="Course Goal"
-               style={{
-                  width: '85%',
-                  borderColor: 'black',
-                  borderWidth: 1,
-                  marginBottom: 5,
-                  padding: 10
-               }}
-               onChangeText={onChangeText}
-            />
+            <TextInput placeholder="Course Goal" style={styles.input} onChangeText={onChangeText} ref={(input) => (textInput = input)} />
+            <Button title="Add" buttonStyle={{ marginBottom: 10, width: 100 }} onPress={addGoalHandler} />
+            <Button title="Cancel" buttonStyle={{ backgroundColor: 'firebrick', width: 100 }} onPress={props.onCancel} />
          </View>
-         <View style={styles.inputContainerButtons}>
-            <Button
-               title="Add Goal"
-               buttonStyle={{ marginRight: 10 }}
-               textStyle={{ marginLeft: 15 }}
-               icon={<Icon name="plus" size={15} color="white" />}
-               onPress={(e) => props.addGoalHandler(currentGoal)}
-            />
-            <Button
-               title="Clear All"
-               buttonStyle={styles.clearAll}
-               textStyle={{ marginLeft: 15 }}
-               icon={<Icon name="times" size={15} color="white" />}
-               onPress={(e) => props.setGoals([])}
-            />
-         </View>
-      </>
+      </Modal>
    )
 }
 
 const styles = StyleSheet.create({
-   clearAll: { backgroundColor: 'firebrick' },
    inputContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      alignItems: 'center'
-   },
-   inputContainerButtons: {
-      flexDirection: 'row',
       justifyContent: 'center',
-      textAlign: 'center'
+      alignItems: 'center',
+      flex: 1
+   },
+   input: {
+      width: '70%',
+      borderColor: 'black',
+      borderWidth: 1,
+      marginBottom: 15,
+      padding: 10
    }
 })
 
