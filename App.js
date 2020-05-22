@@ -21,7 +21,7 @@ export default function App() {
             <TextInput
                placeholder="Course Goal"
                style={{
-                  width: '80%',
+                  width: '90%',
                   borderColor: 'black',
                   borderWidth: 1,
                   marginBottom: 5,
@@ -29,11 +29,14 @@ export default function App() {
                }}
                onChangeText={onChangeText}
             />
-            <Button title="ADD" onPress={addGoalHandler} />
+            <Button title="Add Goal" onPress={addGoalHandler} />
+            <Button title="Clear All" onPress={(e) => setGoals([])} />
          </View>
          <View>
             {courseGoals.map((goal, i) => (
-               <Text key={i}> {goal}</Text>
+               <View style={styles.listItem}>
+                  <Text key={i}> {goal}</Text>
+               </View>
             ))}
          </View>
       </View>
@@ -46,5 +49,11 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center'
+   },
+   listItem: {
+      padding: 10,
+      margin: 2,
+      color: 'white',
+      backgroundColor: 'orange'
    }
 })
