@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, ListItem } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default function App() {
    const [currentGoal, setCurrentGoal] = useState('')
@@ -14,6 +16,11 @@ export default function App() {
       console.log(courseGoals)
    }
 
+   const list = courseGoals.map((goal) => ({
+      title: goal,
+      icon: 'flight-takeoff'
+   }))
+
    /* Render */
    return (
       <View style={styles.screen}>
@@ -21,7 +28,7 @@ export default function App() {
             <TextInput
                placeholder="Course Goal"
                style={{
-                  width: '90%',
+                  width: '85%',
                   borderColor: 'black',
                   borderWidth: 1,
                   marginBottom: 5,
@@ -29,14 +36,26 @@ export default function App() {
                }}
                onChangeText={onChangeText}
             />
-            <Button title="Add Goal" onPress={addGoalHandler} />
-            <Button title="Clear All" onPress={(e) => setGoals([])} />
+         </View>
+         <View style={styles.inputContainerButtons}>
+            <Button
+               title="Add Goal"
+               buttonStyle={{ marginRight: 10 }}
+               textStyle={{ marginLeft: 15 }}
+               icon={<Icon name="plus" size={15} color="white" />}
+               onPress={addGoalHandler}
+            />
+            <Button
+               title="Clear All"
+               buttonStyle={styles.clearAll}
+               textStyle={{ marginLeft: 15 }}
+               icon={<Icon name="times" size={15} color="white" />}
+               onPress={(e) => setGoals([])}
+            />
          </View>
          <View>
-            {courseGoals.map((goal, i) => (
-               <View style={styles.listItem}>
-                  <Text key={i}> {goal}</Text>
-               </View>
+            {list.map((item, i) => (
+               <ListItem key={i} title={item.title} leftIcon={{ name: item.icon }} bottomDivider />
             ))}
          </View>
       </View>
@@ -45,14 +64,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
    screen: { paddingTop: 80 },
+   clearAll: { backgroundColor: 'firebrick' },
    inputContainer: {
-      flexDirection: 'column',
-      justifyContent: 'space-between',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
       alignItems: 'center'
+   },
+   inputContainerButtons: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      textAlign: 'center'
    },
    listItem: {
       padding: 10,
-      margin: 2,
+      marginVertical: 2,
       color: 'white',
       backgroundColor: 'orange'
    }
