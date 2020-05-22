@@ -7,10 +7,10 @@
 </p> 
 
 ---
-| Demo |
-|:-:|
-| ![Screen_Recording_20200522-201105](https://user-images.githubusercontent.com/20374208/82692855-1d949f80-9c69-11ea-80fd-b32d14d22643.gif)
-  |
+
+| Demo | Demo
+|:-:|:-:|
+| ![First](Screen_Recording_20200522-201105](https://user-images.githubusercontent.com/20374208/82692855-1d949f80-9c69-11ea-80fd-b32d14d22643.gif) | ![Sec](Screen_Recording_20200522-201105](https://user-images.githubusercontent.com/20374208/82692855-1d949f80-9c69-11ea-80fd-b32d14d22643.gif) |
 
 | Home | Add Goal
 |:-:|:-:|
