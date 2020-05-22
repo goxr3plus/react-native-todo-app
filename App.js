@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
-import { StyleSheet, Button, TextInput, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 
 export default function App() {
-   const [goal, setGoal] = useState('')
+   const [currentGoal, setCurrentGoal] = useState('')
+   const [courseGoals, setGoals] = useState([])
 
    const onChangeText = (goal) => {
-      setGoal(goal)
+      setCurrentGoal(goal)
+   }
+
+   const addGoalHandler = () => {
+      setGoals((currentGoals) => [...currentGoals, currentGoal]) // currentGoals = like previews state
+      console.log(courseGoals)
    }
 
    /* Render */
@@ -23,9 +29,13 @@ export default function App() {
                }}
                onChangeText={onChangeText}
             />
-            <Button title="ADD" onPress={(e) => console.log(goal)} />
+            <Button title="ADD" onPress={addGoalHandler} />
          </View>
-         <View></View>
+         <View>
+            {courseGoals.map((goal, i) => (
+               <Text key={i}> {goal}</Text>
+            ))}
+         </View>
       </View>
    )
 }
