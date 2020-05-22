@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Button, TextInput, View } from 'react-native'
 
-export default App = () => {
+export default function App() {
+   const [goal, setGoal] = useState('')
+
+   const onChangeText = (goal) => {
+      setGoal(goal)
+   }
+
+   /* Render */
    return (
       <View style={styles.screen}>
          <View style={styles.inputContainer}>
@@ -14,8 +21,9 @@ export default App = () => {
                   marginBottom: 5,
                   padding: 10
                }}
-            ></TextInput>
-            <Button title="ADD"></Button>
+               onChangeText={onChangeText}
+            />
+            <Button title="ADD" onPress={(e) => console.log(goal)} />
          </View>
          <View></View>
       </View>
