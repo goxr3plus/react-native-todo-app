@@ -34,7 +34,7 @@ export default function App() {
                textStyle={{ marginLeft: 15 }}
                onPress={() => setAddModalVisible(!isAddModalVisible)}
             />
-            <Button title="Clear All" buttonStyle={styles.clearAll} textStyle={{ marginLeft: 15 }} onPress={() => props.setGoals([])} />
+            <Button title="Clear All" buttonStyle={styles.clearAll} textStyle={{ marginLeft: 15 }} onPress={() => setGoals([])} />
          </View>
          <GoalInput
             isVisible={isAddModalVisible}
